@@ -29,9 +29,7 @@ export class SwapService {
         'Authorization': 'my-auth-token'
       })
     };
-    const json = JSON.stringify(set);
-
-    return this.http.post('/swap', json, httpOptions);
+    return this.http.post('/swap', set, httpOptions);
   }
 }
 

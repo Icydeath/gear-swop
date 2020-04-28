@@ -4,22 +4,26 @@ namespace GearSwop.SwapProcessor
 {
     public interface IProcessor
     {
-        Swap StartProcessing(string item);
+        Swap StartProcessing(Swap formResponse);
     }
     
     public class Processor: IProcessor
     {
-        public Swap StartProcessing(string item)
+        public Swap StartProcessing(Swap formResponse)
         {
-            return new Swap()
+            return new Swap
             {
-                CharacterName = item,
-                Job = item,
-                FileContent = new LuaFile()
+                CharacterName = formResponse.CharacterName,
+                Job = formResponse.Job,
+                FileContent = new LuaFile
+                {
+                    JobSetup = "Warrior Job Setup goes here eventually",
+                    Sets = GenerateGearSets()
+                }
             };
         }
     
-        private List<GearSet> GenerateGearSet()
+        private List<GearSet> GenerateGearSets()
         {
             return new List<GearSet>();
         }

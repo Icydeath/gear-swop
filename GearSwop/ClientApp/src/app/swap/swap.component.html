@@ -1,7 +1,26 @@
-<div>
+<form [formGroup]="gearSetForm" (ngSubmit)="submitGearSetForm()">
   <label>
-    <input type="text" [(ngModel)]="gearSet">
+    Character Name:
+    <input type="text" formControlName="characterName">
   </label>
-</div>
+  <br>
+  <label>
+    Job:
+    <input type="text" formControlName="job">
+  </label>
+  <br>
+  <label>
+    Main:
+    <input type="text" formControlName="main">
+  </label>
+  <br>
+  <label>
+    Sub:
+    <input type="text" formControlName="sub">
+  </label>
+  <br>
+  <button type="submit">Server Submit</button>
+</form>
 
-<button type="button" (click)="submitGearSetForm()">Server Submit</button>
+
+

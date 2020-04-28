@@ -1,4 +1,5 @@
-﻿using GearSwop.SwapProcessor;
+﻿using System.Text.Json;
+using GearSwop.SwapProcessor;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GearSwop.Controllers
@@ -21,14 +22,9 @@ namespace GearSwop.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostSwap([FromBody] string item)
+        public IActionResult PostSwap([FromBody] Swap formResponse)
         {
-            if (item.Contains("a"))
-            {
-                return Ok(processor.StartProcessing(item));
-            }
-
-            return BadRequest();
+            return Ok(processor.StartProcessing(formResponse));
         }
     }
 }
