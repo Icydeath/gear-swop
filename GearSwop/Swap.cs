@@ -8,8 +8,8 @@
             Job = job;
         }
 
-        private string CharacterName { get; }
-        private string Job { get; }
+        public string CharacterName { get; }
+        public string Job { get; }
         public LuaFile FileContent { get; set; }
     }
 }

@@ -155,23 +155,17 @@
             <e p="app.component.ts" t="Include" />
             <e p="app.module.ts" t="Include" />
             <e p="app.server.module.ts" t="Include" />
-            <e p="counter" t="Include">
-              <e p="counter.component.html" t="Include" />
-              <e p="counter.component.spec.ts" t="Include" />
-              <e p="counter.component.ts" t="Include" />
-            </e>
             <e p="fetch-data" t="Include">
               <e p="fetch-data.component.html" t="Include" />
               <e p="fetch-data.component.ts" t="Include" />
             </e>
-            <e p="home" t="Include">
-              <e p="home.component.html" t="Include" />
-              <e p="home.component.ts" t="Include" />
+            <e p="services" t="Include">
+              <e p="swap.service.spec.ts" t="Include" />
+              <e p="swap.service.ts" t="Include" />
             </e>
-            <e p="nav-menu" t="Include">
-              <e p="nav-menu.component.css" t="Include" />
-              <e p="nav-menu.component.html" t="Include" />
-              <e p="nav-menu.component.ts" t="Include" />
+            <e p="swap" t="Include">
+              <e p="swap.component.html" t="Include" />
+              <e p="swap.component.ts" t="Include" />
             </e>
           </e>
           <e p="assets" t="Include">

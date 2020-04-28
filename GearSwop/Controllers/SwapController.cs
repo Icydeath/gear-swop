@@ -3,7 +3,7 @@
 namespace GearSwop.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("swap")]
     public class SwapController : ControllerBase
     {
         [HttpGet]
