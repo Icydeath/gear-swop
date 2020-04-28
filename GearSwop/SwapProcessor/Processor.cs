@@ -25,7 +25,17 @@ namespace GearSwop.SwapProcessor
     
         private List<GearSet> GenerateGearSets()
         {
-            return new List<GearSet>();
+            return new List<GearSet>
+            {
+                new GearSet {
+                    Main = "Hardcoded mainhand weapon.",
+                    Sub = "Hardcoded sub weapon."
+                },
+                new GearSet {
+                    Main = "Hardcoded mainhand weapon.",
+                    Sub = "Hardcoded sub weapon."
+                }
+            };
         }
     }
 }
