@@ -9,27 +9,8 @@ import {IGearSet} from '../Interfaces/GearSet';
 })
 export class SwapService {
 
-  constructor(private http: HttpClient) {
+  constructor() {  }
 
-  }
 
-  /*getSwap(): Observable<ISwap> {
-    return this.http.get('/swap')
-      .pipe(
-        map(res =>{
-          return res as ISwap
-        })
-      );
-  }*/
-
-  postSwap(set: IGearSet) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
-    return this.http.post('/swap', set, httpOptions);
-  }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {SwapService} from '../../services/swap.service';
+import {GearSetService} from '../../services/gear-set.service';
 
 @Component({
   selector: 'app-gearset',
@@ -27,15 +28,13 @@ export class GearsetComponent implements OnInit {
     back: new FormControl(''),
   });
 
-  constructor(private swapService: SwapService) { }
+  constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
 
   ngOnInit() {
   }
 
   submitGearSetForm() {
-    this.swapService.postSwap(this.gearSetForm.value).subscribe(x => {
-      console.log(x);
-    })
+    this.gearSetService.updateSet(this.gearSetForm)
   }
 
 }
