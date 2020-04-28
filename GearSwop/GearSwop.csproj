@@ -19,10 +19,13 @@
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**" />
+        <Content Include="ClientApp\src\app\swap\gearset\gearset.component.html" />
+        <Content Include="ClientApp\src\app\swap\gearset\gearset.component.scss" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
         <None Include="ClientApp\src\app\Interfaces\GearSet.ts" />
         <None Include="ClientApp\src\app\swap\fetch-data.component.ts" />
+        <None Include="ClientApp\src\app\swap\gearset\gearset.component.ts" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

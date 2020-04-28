@@ -22,6 +22,7 @@
           <e p="tsconfig.e2e.json" t="Include" />
         </e>
         <e p="node_modules\@angular\animations" t="IncludeRecursive" />
+        <e p="node_modules\@angular\cdk" t="IncludeRecursive" />
         <e p="node_modules\@angular\cli" t="IncludeRecursive" />
         <e p="node_modules\@angular\common" t="IncludeRecursive" />
         <e p="node_modules\@angular\compiler" t="IncludeRecursive" />
@@ -79,6 +80,8 @@
         <e p="node_modules\popper.js" t="IncludeRecursive" />
         <e p="node_modules\portfinder" t="IncludeRecursive" />
         <e p="node_modules\postcss" t="IncludeRecursive" />
+        <e p="node_modules\primeicons" t="IncludeRecursive" />
+        <e p="node_modules\primeng" t="IncludeRecursive" />
         <e p="node_modules\protractor" t="IncludeRecursive" />
         <e p="node_modules\reflect-metadata" t="IncludeRecursive" />
         <e p="node_modules\rxjs" t="IncludeRecursive" />
@@ -167,6 +170,12 @@
               <e p="swap.service.ts" t="Include" />
             </e>
             <e p="swap" t="Include">
+              <e p="gearset" t="Include">
+                <e p="gearset.component.html" t="Include" />
+                <e p="gearset.component.scss" t="Include" />
+                <e p="gearset.component.spec.ts" t="Include" />
+                <e p="gearset.component.ts" t="Include" />
+              </e>
               <e p="swap.component.html" t="Include" />
               <e p="swap.component.ts" t="Include" />
             </e>

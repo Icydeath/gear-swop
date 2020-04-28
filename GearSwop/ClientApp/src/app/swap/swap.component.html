@@ -1,4 +1,4 @@
-<form [formGroup]="gearSetForm" (ngSubmit)="submitGearSetForm()">
+<form [formGroup]="characterJobForm" (ngSubmit)="submitJobForm()">
   <label>
     Character Name:
     <input type="text" formControlName="characterName">
@@ -8,19 +8,11 @@
     Job:
     <input type="text" formControlName="job">
   </label>
-  <br>
-  <label>
-    Main:
-    <input type="text" formControlName="main">
-  </label>
-  <br>
-  <label>
-    Sub:
-    <input type="text" formControlName="sub">
-  </label>
-  <br>
-  <button type="submit">Server Submit</button>
 </form>
-
+<br>
+<br>
+<br>
+<br>
+<app-gearset></app-gearset>
 
 

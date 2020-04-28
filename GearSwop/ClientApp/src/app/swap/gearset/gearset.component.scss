@@ -1,0 +1,18 @@
+﻿form {
+  padding-left: 100px;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+input {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+}
+
+.gearRow {
+  display: flex;
+  flex-direction: row;
+}

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {SwapService} from '../services/swap.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -7,18 +6,12 @@ import { FormGroup, FormControl } from '@angular/forms';
   templateUrl: './swap.component.html'
 })
 export class SwapComponent {
-  gearSetForm = new FormGroup({
+  characterJobForm = new FormGroup({
     characterName: new FormControl(''),
-    job: new FormControl(''),
-    main: new FormControl(''),
-    sub: new FormControl('')
+    job: new FormControl('')
   });
 
-  constructor(private swapService: SwapService) { }
-
-  submitGearSetForm() {
-    this.swapService.postSwap(this.gearSetForm.value).subscribe(x => {
-      console.log(x);
-    })
+  submitJobForm() {
+    console.log(this.characterJobForm.value);
   }
 }
