@@ -159,6 +159,9 @@
               <e p="fetch-data.component.html" t="Include" />
               <e p="fetch-data.component.ts" t="Include" />
             </e>
+            <e p="Interfaces" t="Include">
+              <e p="GearSet.ts" t="Include" />
+            </e>
             <e p="services" t="Include">
               <e p="swap.service.spec.ts" t="Include" />
               <e p="swap.service.ts" t="Include" />
@@ -217,6 +220,9 @@
       </e>
       <e p="Startup.cs" t="Include" />
       <e p="Swap.cs" t="Include" />
+      <e p="SwapProcessor" t="Include">
+        <e p="Processor.cs" t="Include" />
+      </e>
       <e p="WeatherForecast.cs" t="Include" />
       <e p="wwwroot" t="Include">
         <e p="favicon.ico" t="Include" />

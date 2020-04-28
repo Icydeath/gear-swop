@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GearSwop.SwapProcessor;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GearSwop.Controllers
 {
@@ -6,10 +7,28 @@ namespace GearSwop.Controllers
     [Route("swap")]
     public class SwapController : ControllerBase
     {
-        [HttpGet]
-        public Swap GetSwap()
+        private readonly IProcessor processor;
+
+        public SwapController(IProcessor processor)
         {
-            return new Swap("Exclore", "Warrior");
+            this.processor = processor;
+        }
+
+        [HttpGet]
+        public string GetSwap()
+        {
+            return "taco";
+        }
+
+        [HttpPost]
+        public IActionResult PostSwap([FromBody] string item)
+        {
+            if (item.Contains("a"))
+            {
+                return Ok(processor.StartProcessing(item));
+            }
+
+            return BadRequest();
         }
     }
 }

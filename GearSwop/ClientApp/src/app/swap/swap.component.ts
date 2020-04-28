@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import {SwapService} from '../services/swap.service';
+import {IGearSet} from '../Interfaces/GearSet';
 
 @Component({
   selector: 'app-swap',
   templateUrl: './swap.component.html'
 })
 export class SwapComponent {
-  characterName: string;
-  job: string;
+  gearSet: IGearSet;
 
-  constructor(swapService: SwapService) {
-    swapService.getSwap().subscribe( res => {
-      this.characterName = res.characterName;
-      this.job = res.job
+  constructor(private swapService: SwapService) { }
+
+  submitGearSetForm() {
+    this.swapService.postSwap(this.gearSet).subscribe(x => {
+      console.log(x);
     })
   }
-
 }

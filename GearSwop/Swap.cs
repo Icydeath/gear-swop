@@ -2,14 +2,8 @@
 {
     public class Swap
     {
-        public Swap(string characterName, string job)
-        {
-            CharacterName = characterName;
-            Job = job;
-        }
-
-        public string CharacterName { get; }
-        public string Job { get; }
+        public string CharacterName { get; set;  }
+        public string Job { get; set; }
         public LuaFile FileContent { get; set; }
     }
 }
