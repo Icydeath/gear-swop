@@ -20,6 +20,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {MatListModule} from '@angular/material/list';
     MatSidenavModule,
     MatCheckboxModule,
     MatListModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
