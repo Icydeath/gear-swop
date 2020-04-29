@@ -1,3 +1,9 @@
+<form class="set-title">
+  <mat-form-field>
+    <mat-label>Set Name</mat-label>
+    <input [(ngModel)]="setName" matInput placeholder="Set Name" name="setNamer">
+  </mat-form-field>
+</form>
 <div class="gear-select-layout">
   <div class="gear-set-display">
     <div class="gear-row">
@@ -25,5 +31,5 @@
       <div class="gear-display-item" (click)="selectGearItem('Feet')"></div>
     </div>
   </div>
-  <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateItem($event)"></app-gear-selection>
+  <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateSet($event)"></app-gear-selection>
 </div>

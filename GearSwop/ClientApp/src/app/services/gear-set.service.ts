@@ -29,8 +29,9 @@ export class GearSetService {
 
   constructor(private http: HttpClient) { }
 
-  updateSingleItem(slot, item) {
+  updateSet(set, slot, item) {
     this.activeSet[slot] = item;
+    this.activeSet.SetName = set;
     console.log(this.activeSet);
   }
 

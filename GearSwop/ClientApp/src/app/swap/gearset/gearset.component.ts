@@ -8,15 +8,16 @@ import {GearSetService} from '../../services/gear-set.service';
   styleUrls: ['./gearset.component.scss']
 })
 export class GearsetComponent implements OnInit {
-  slot = "Main";
+  setName = "";
+  slot: string;
   private displayGearSelection: boolean;
 
   constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
 
   ngOnInit() { }
 
-  updateItem($event) {
-    this.gearSetService.updateSingleItem($event.slot, $event.itemName)
+  updateSet($event) {
+    this.gearSetService.updateSet(this.setName, $event.slot, $event.itemName)
     this.displayGearSelection = false;
   }
 

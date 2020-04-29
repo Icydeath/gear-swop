@@ -22,6 +22,4 @@ export class GearSelectionComponent implements OnInit {
   saveSelectedItem() {
     this.chosenItem.emit({ slot: this.slot, itemName: this.gearSelector.value})
   }
-
-
 }
