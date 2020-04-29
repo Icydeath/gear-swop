@@ -166,6 +166,12 @@
               <e p="GearItem.ts" t="Include" />
               <e p="GearSet.ts" t="Include" />
             </e>
+            <e p="nav-menu" t="Include">
+              <e p="nav-menu.component.html" t="Include" />
+              <e p="nav-menu.component.scss" t="Include" />
+              <e p="nav-menu.component.spec.ts" t="Include" />
+              <e p="nav-menu.component.ts" t="Include" />
+            </e>
             <e p="services" t="Include">
               <e p="gear-set.service.spec.ts" t="Include" />
               <e p="gear-set.service.ts" t="Include" />

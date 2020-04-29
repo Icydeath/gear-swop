@@ -16,6 +16,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import {MatInputModule} from '@angular/material/input';
     FetchDataComponent,
     SwapComponent,
     GearsetComponent,
-    GearSelectionComponent
+    GearSelectionComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -40,6 +44,8 @@ import {MatInputModule} from '@angular/material/input';
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatSidenavModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
