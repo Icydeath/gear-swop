@@ -1,90 +1,78 @@
 <form [formGroup]="gearSetForm" (ngSubmit)="submitGearSetForm()">
   <div class="gearRow">
     <label>
-      <img src="https://static.ffxiah.com/images/eq1.gif">
       <input type="text" formControlName="main">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq2.gif">
       <input type="text" formControlName="sub">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq3.gif">
       <input type="text" formControlName="range">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq4.gif">
       <input type="text" formControlName="ammo">
     </label>
   </div>
   <div class="gearRow">
     <label>
-      <img src="https://static.ffxiah.com/images/eq5.gif">
       <input type="text" formControlName="head">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq6.gif">
       <input type="text" formControlName="body">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq7.gif">
       <input type="text" formControlName="hands">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq8.gif">
       <input type="text" formControlName="legs">
     </label>
   </div>
   <div class="gearRow">
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq9.gif">
       <input type="text" formControlName="feet">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq10.gif">
       <input type="text" formControlName="neck">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq11.gif">
       <input type="text" formControlName="waist">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq12.gif">
       <input type="text" formControlName="leftEar">
     </label>
   </div>
   <div class="gearRow">
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq13.gif">
       <input type="text" formControlName="rightEar">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq14.gif">
       <input type="text" formControlName="leftRing">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq15.gif">
       <input type="text" formControlName="rightRing">
     </label>
     <br>
     <label>
-      <img src="https://static.ffxiah.com/images/eq16.gif">
       <input type="text" formControlName="back">
     </label>
     <br>
   </div>
-  <button type="submit">Server Submit</button>
+  <button mat-button type="submit">Submit</button>
 </form>
+
+<br>
+
+<app-gear-selection [slot]="main" (chosenItem)="updateItem($event)"></app-gear-selection>

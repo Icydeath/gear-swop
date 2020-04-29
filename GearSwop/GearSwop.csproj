@@ -24,7 +24,6 @@
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
         <None Include="ClientApp\src\app\Interfaces\GearSet.ts" />
-        <None Include="ClientApp\src\app\swap\fetch-data.component.ts" />
         <None Include="ClientApp\src\app\swap\gearset\gearset.component.ts" />
     </ItemGroup>
 

@@ -1,18 +1,20 @@
-﻿export interface IGearSet {
+﻿import {IGearItem} from './GearItem';
+
+export interface IGearSet {
   SetName: string;
-  Main: string;
-  Sub: string;
-  Ammo: string;
-  Head: string;
-  Body: string;
-  Hands: string;
-  Legs: string;
-  Feet: string;
-  Neck: string;
-  Waist: string;
-  LeftEar: string;
-  RightEar: string;
-  LeftRing: string;
-  RightRing: string;
-  Back: string;
+  Main: IGearItem;
+  Sub: IGearItem;
+  Ammo: IGearItem;
+  Head: IGearItem;
+  Body: IGearItem;
+  Hands: IGearItem;
+  Legs: IGearItem;
+  Feet: IGearItem;
+  Neck: IGearItem;
+  Waist: IGearItem;
+  LeftEar: IGearItem;
+  RightEar: IGearItem;
+  LeftRing: IGearItem;
+  RightRing: IGearItem;
+  Back: IGearItem;
 }

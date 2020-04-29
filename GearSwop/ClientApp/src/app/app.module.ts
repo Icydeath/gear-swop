@@ -9,15 +9,21 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import {SwapComponent} from './swap/swap.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GearsetComponent } from './swap/gearset/gearset.component';
-import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { GearSelectionComponent } from './swap/gear-selection/gear-selection.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     FetchDataComponent,
     SwapComponent,
-    GearsetComponent
+    GearsetComponent,
+    GearSelectionComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),
@@ -29,7 +35,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
       {path: '', component: SwapComponent, pathMatch: 'full'},
       {path: 'fetch-data', component: FetchDataComponent},
     ]),
-    OverlayPanelModule
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

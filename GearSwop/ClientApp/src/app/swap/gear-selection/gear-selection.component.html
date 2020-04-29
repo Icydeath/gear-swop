@@ -1,0 +1,27 @@
+<mat-card class="gear-selection-card">
+  <mat-card-header>
+    <mat-card-title>Pick an item for the {{this.slot}} slot</mat-card-title>
+    <mat-card-subtitle>Current Item: ???</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="gearSelector"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of autocompleteOptions" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Cancel</button>
+    <button mat-button (click)="saveSelectedItem()">Save</button>
+  </mat-card-actions>
+</mat-card>

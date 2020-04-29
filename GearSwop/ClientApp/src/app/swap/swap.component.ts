@@ -3,7 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-swap',
-  templateUrl: './swap.component.html'
+  templateUrl: './swap.component.html',
+  styleUrls: ['./swap.component.scss']
 })
 export class SwapComponent {
   characterJobForm = new FormGroup({

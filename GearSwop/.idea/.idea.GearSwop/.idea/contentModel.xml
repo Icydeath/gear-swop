@@ -29,6 +29,7 @@
         <e p="node_modules\@angular\compiler-cli" t="IncludeRecursive" />
         <e p="node_modules\@angular\core" t="IncludeRecursive" />
         <e p="node_modules\@angular\forms" t="IncludeRecursive" />
+        <e p="node_modules\@angular\material" t="IncludeRecursive" />
         <e p="node_modules\@angular\platform-browser" t="IncludeRecursive" />
         <e p="node_modules\@angular\platform-browser-dynamic" t="IncludeRecursive" />
         <e p="node_modules\@angular\platform-server" t="IncludeRecursive" />
@@ -64,6 +65,7 @@
         <e p="node_modules\domino" t="IncludeRecursive" />
         <e p="node_modules\es6-promise" t="IncludeRecursive" />
         <e p="node_modules\fast-deep-equal" t="IncludeRecursive" />
+        <e p="node_modules\hammerjs" t="IncludeRecursive" />
         <e p="node_modules\jasmine-core" t="IncludeRecursive" />
         <e p="node_modules\jasmine-spec-reporter" t="IncludeRecursive" />
         <e p="node_modules\jest-worker" t="IncludeRecursive" />
@@ -161,6 +163,7 @@
               <e p="fetch-data.component.ts" t="Include" />
             </e>
             <e p="Interfaces" t="Include">
+              <e p="GearItem.ts" t="Include" />
               <e p="GearSet.ts" t="Include" />
             </e>
             <e p="services" t="Include">
@@ -170,7 +173,12 @@
               <e p="swap.service.ts" t="Include" />
             </e>
             <e p="swap" t="Include">
-              <e p="fetch-data.component.ts" t="Include" />
+              <e p="gear-selection" t="Include">
+                <e p="gear-selection.component.html" t="Include" />
+                <e p="gear-selection.component.scss" t="Include" />
+                <e p="gear-selection.component.spec.ts" t="Include" />
+                <e p="gear-selection.component.ts" t="Include" />
+              </e>
               <e p="gearset" t="Include">
                 <e p="gearset.component.html" t="Include" />
                 <e p="gearset.component.scss" t="Include" />
@@ -178,6 +186,7 @@
                 <e p="gearset.component.ts" t="Include" />
               </e>
               <e p="swap.component.html" t="Include" />
+              <e p="swap.component.scss" t="Include" />
               <e p="swap.component.ts" t="Include" />
             </e>
           </e>

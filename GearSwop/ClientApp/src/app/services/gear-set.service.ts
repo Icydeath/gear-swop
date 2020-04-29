@@ -1,24 +1,41 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
 import {IGearSet} from '../Interfaces/GearSet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {IGearItem} from '../Interfaces/GearItem';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GearSetService {
 
-  activeSet: IGearSet;
+  activeSet: IGearSet = new class implements IGearSet {
+    Ammo: IGearItem;
+    Back: IGearItem;
+    Body: IGearItem;
+    Feet: IGearItem;
+    Hands: IGearItem;
+    Head: IGearItem;
+    LeftEar: IGearItem;
+    LeftRing: IGearItem;
+    Legs: IGearItem;
+    Main: IGearItem;
+    Neck: IGearItem;
+    RightEar: IGearItem;
+    RightRing: IGearItem;
+    SetName: string;
+    Sub: IGearItem;
+    Waist: IGearItem;
+  };
 
   constructor(private http: HttpClient) { }
 
-  updateSet(formValue): Observable<boolean> {
-    try{
-      this.activeSet = formValue;
-    } catch {
-      return new Observable<false>();
-    }
-    return new Observable<true>();
+  updateFullSet(formValue) {
+    this.activeSet = formValue;
+  }
+
+  updateSingleItem(slot, item) {
+    this.activeSet[slot] = item;
+    console.log(this.activeSet);
   }
 
   get getActiveSet() {

@@ -9,6 +9,7 @@ import {GearSetService} from '../../services/gear-set.service';
   styleUrls: ['./gearset.component.scss']
 })
 export class GearsetComponent implements OnInit {
+  main = "Main";
   gearSetForm = new FormGroup({
     main: new FormControl(''),
     sub: new FormControl(''),
@@ -30,11 +31,13 @@ export class GearsetComponent implements OnInit {
 
   constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  updateItem($event) {
+    this.gearSetService.updateSingleItem($event.slot, $event.itemName)
   }
 
   submitGearSetForm() {
-    this.gearSetService.updateSet(this.gearSetForm)
+    this.gearSetService.updateFullSet(this.gearSetForm.value);
   }
-
 }
