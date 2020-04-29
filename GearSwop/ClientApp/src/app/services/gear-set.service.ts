@@ -9,6 +9,7 @@ import {IGearItem} from '../Interfaces/GearItem';
 export class GearSetService {
 
   activeSet: IGearSet = new class implements IGearSet {
+    SetName: string;
     Ammo: IGearItem;
     Back: IGearItem;
     Body: IGearItem;
@@ -22,16 +23,11 @@ export class GearSetService {
     Neck: IGearItem;
     RightEar: IGearItem;
     RightRing: IGearItem;
-    SetName: string;
     Sub: IGearItem;
     Waist: IGearItem;
   };
 
   constructor(private http: HttpClient) { }
-
-  updateFullSet(formValue) {
-    this.activeSet = formValue;
-  }
 
   updateSingleItem(slot, item) {
     this.activeSet[slot] = item;

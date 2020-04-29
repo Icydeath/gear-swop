@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
 import {SwapService} from '../../services/swap.service';
 import {GearSetService} from '../../services/gear-set.service';
 
@@ -9,25 +8,8 @@ import {GearSetService} from '../../services/gear-set.service';
   styleUrls: ['./gearset.component.scss']
 })
 export class GearsetComponent implements OnInit {
-  main = "Main";
-  gearSetForm = new FormGroup({
-    main: new FormControl(''),
-    sub: new FormControl(''),
-    range: new FormControl(''),
-    ammo: new FormControl(''),
-    head: new FormControl(''),
-    body: new FormControl(''),
-    hands: new FormControl(''),
-    legs: new FormControl(''),
-    feet: new FormControl(''),
-    neck: new FormControl(''),
-    waist: new FormControl(''),
-    leftEar: new FormControl(''),
-    rightEar: new FormControl(''),
-    leftRing: new FormControl(''),
-    rightRing: new FormControl(''),
-    back: new FormControl(''),
-  });
+  slot = "Main";
+  private displayGearSelection: boolean;
 
   constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
 
@@ -35,9 +17,11 @@ export class GearsetComponent implements OnInit {
 
   updateItem($event) {
     this.gearSetService.updateSingleItem($event.slot, $event.itemName)
+    this.displayGearSelection = false;
   }
 
-  submitGearSetForm() {
-    this.gearSetService.updateFullSet(this.gearSetForm.value);
+  selectGearItem(slot: string) {
+    this.slot = slot;
+    this.displayGearSelection = true;
   }
 }

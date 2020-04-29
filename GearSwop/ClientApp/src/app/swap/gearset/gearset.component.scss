@@ -1,17 +1,22 @@
-﻿form {
-  padding-left: 100px;
-}
-
-label {
-  margin-bottom: 0;
-}
-
-input {
-  height: 32px;
-  width: 32px;
-}
-
-.gearRow {
+﻿.gear-select-layout {
   display: flex;
   flex-direction: row;
 }
+
+.gear-set-display {
+  margin-left: 15%;
+  margin-right: 5%;
+
+  .gear-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .gear-display-item {
+    height: 32px;
+    width: 32px;
+    border: solid 1px #ddd;
+  }
+}
+
+

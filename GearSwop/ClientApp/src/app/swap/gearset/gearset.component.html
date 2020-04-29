@@ -1,63 +1,29 @@
-<form [formGroup]="gearSetForm" (ngSubmit)="submitGearSetForm()">
-  <div class="gearRow">
-    <label>
-      <input type="text" formControlName="main">
-    </label>
-    <label>
-      <input type="text" formControlName="sub">
-    </label>
-    <label>
-      <input type="text" formControlName="range">
-    </label>
-    <label>
-      <input type="text" formControlName="ammo">
-    </label>
+<div class="gear-select-layout">
+  <div class="gear-set-display">
+    <div class="gear-row">
+      <div class="gear-display-item" (click)="selectGearItem('Main')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Sub')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Ranged')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Ammo')"></div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-display-item" (click)="selectGearItem('Head')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Neck')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Left Ear')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Right Ear')"></div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-display-item" (click)="selectGearItem('Body')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Gloves')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Left Ring')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Right Ring')"></div>
+    </div>
+    <div class="gear-row">
+      <div class="gear-display-item" (click)="selectGearItem('Back')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Waist')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Legs')"></div>
+      <div class="gear-display-item" (click)="selectGearItem('Feet')"></div>
+    </div>
   </div>
-  <div class="gearRow">
-    <label>
-      <input type="text" formControlName="head">
-    </label>
-    <label>
-      <input type="text" formControlName="body">
-    </label>
-    <label>
-      <input type="text" formControlName="hands">
-    </label>
-    <label>
-      <input type="text" formControlName="legs">
-    </label>
-  </div>
-  <div class="gearRow">
-    <label>
-      <input type="text" formControlName="feet">
-    </label>
-    <label>
-      <input type="text" formControlName="neck">
-    </label>
-    <label>
-      <input type="text" formControlName="waist">
-    </label>
-    <label>
-      <input type="text" formControlName="leftEar">
-    </label>
-  </div>
-  <div class="gearRow">
-    <label>
-      <input type="text" formControlName="rightEar">
-    </label>
-    <label>
-      <input type="text" formControlName="leftRing">
-    </label>
-    <label>
-      <input type="text" formControlName="rightRing">
-    </label>
-    <label>
-      <input type="text" formControlName="back">
-    </label>
-  </div>
-  <button mat-button type="submit">Submit</button>
-</form>
-
-<br>
-
-<app-gear-selection [slot]="main" (chosenItem)="updateItem($event)"></app-gear-selection>
+  <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateItem($event)"></app-gear-selection>
+</div>
