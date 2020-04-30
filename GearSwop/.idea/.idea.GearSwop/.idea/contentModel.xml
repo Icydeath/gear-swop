@@ -173,6 +173,8 @@
               <e p="nav-menu.component.ts" t="Include" />
             </e>
             <e p="services" t="Include">
+              <e p="gear-image-service.service.spec.ts" t="Include" />
+              <e p="gear-image-service.service.ts" t="Include" />
               <e p="gear-set.service.spec.ts" t="Include" />
               <e p="gear-set.service.ts" t="Include" />
               <e p="swap.service.spec.ts" t="Include" />
@@ -247,6 +249,10 @@
       <e p="Swap.cs" t="Include" />
       <e p="SwapProcessor" t="Include">
         <e p="Processor.cs" t="Include" />
+      </e>
+      <e p="Temp" t="Include">
+        <e p="item_descriptions.lua" t="Include" />
+        <e p="items.lua" t="Include" />
       </e>
       <e p="WeatherForecast.cs" t="Include" />
       <e p="wwwroot" t="Include">
