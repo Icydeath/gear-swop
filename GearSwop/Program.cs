@@ -1,10 +1,14 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -20,9 +24,20 @@ namespace GearSwop
             var items = LoadLuaResource("./Temp/items.lua");
             var itemDescriptions = LoadLuaResource("./Temp/item_descriptions.lua");
 
-            var id = 22063;
+            var id = 11697;
             Console.WriteLine(items[id]["en"]);
-            Console.WriteLine(itemDescriptions[id]["en"]);
+            //Console.WriteLine(itemDescriptions[id]["en"]);
+
+            var allItems = MergeItems(items, itemDescriptions);
+            
+            //open file stream
+            using (StreamWriter file = File.CreateText(@".\test.json"))
+            {
+                JsonSerializer serializer = new JsonSerializer();
+                //serialize object directly into file stream
+                serializer.Serialize(file, allItems);
+            }
+             
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -44,6 +59,124 @@ namespace GearSwop
             }
 
             return items;
+        }
+
+        private static Dictionary<int, Dictionary<string, string>> MergeItems(
+            Dictionary<int, Dictionary<string, string>> items,
+            Dictionary<int, Dictionary<string, string>> itemDescriptions)
+        {
+            /*enum slotEnum
+            {
+                
+            }*/
+            var slotMap = new Dictionary<int, string>
+            {
+                [0] = "Main",
+                [1] = "Sub",
+                [2] = "Range",
+                [3] = "Ammo",
+                [4] = "Head",
+                [5] = "Body",
+                [6] = "Hands",
+                [7] = "Legs",
+                [8] = "Feet",
+                [9] = "Neck",
+                [10] = "Waist",
+                [11] = "Left Ear",
+                [12] = "Right Ear",
+                [13] = "Left Ring",
+                [14] = "Right Ring",
+                [15] = "Back"
+            };//*/
+            var jobMap = new Dictionary<int, string>
+            {
+                [0] = "NON",
+                [1] = "WAR",
+                [2] = "MNK",
+                [3] = "WHM",
+                [4] = "BLM",
+                [5] = "RDM",
+                [6] = "THF",
+                [7] = "PLD",
+                [8] = "DRK",
+                [9] = "BST",
+                [10] = "BRD",
+                [11] = "RNG",
+                [12] = "SAM",
+                [13] = "NIN",
+                [14] = "DRG",
+                [15] = "SMN",
+                [16] = "BLU",
+                [17] = "COR",
+                [18] = "PUP",
+                [19] = "DNC",
+                [20] = "SCH",
+                [21] = "GEO",
+                [22] = "RUN",
+                [23] = "MON",
+            };
+            var flagMap = new Dictionary<int, string>
+            {
+                [6] = "Aug",
+                [15] = "Rare",
+                [14] = "Ex",
+            };
+            var finalItems = new Dictionary<int, Dictionary<string, string>>();
+            foreach (KeyValuePair<int, Dictionary<string, string>> itemData in items)
+            {
+                Console.WriteLine(itemData.Value["category"]+itemData.Value["id"]);
+                if (itemData.Value["category"] != "Armor" && itemData.Value["category"] != "Weapon")
+                {
+                    continue;
+                }
+                var item = new Dictionary<string, string>();
+                item["name"] = itemData.Value["en"];
+                item["lname"] = itemData.Value["enl"];
+                item["slots"] = ParseBitfieldMap(Int32.Parse(itemData.Value["slots"]), slotMap);
+                item["jobs"] = ParseBitfieldMap(Int32.Parse(itemData.Value["jobs"]), jobMap);
+                item["flags"] = ParseBitfieldMap(Int32.Parse(itemData.Value["flags"]), flagMap);
+                item["lvl"] = itemData.Value["level"];
+                if (itemDescriptions.ContainsKey(itemData.Key))
+                {
+                    item["desc"] = itemDescriptions[itemData.Key]["en"];
+                }
+                else
+                {
+                    item["desc"] = "";
+                }
+                if (itemData.Value.ContainsKey("item_level"))
+                {
+                    item["ilvl"] = itemData.Value["item_level"];
+                }
+                else
+                {
+                    item["ilvl"] = itemData.Value["level"];
+                }
+                finalItems[itemData.Key] = item;
+            }
+
+            return finalItems;
+        }
+
+        private static string ParseBitfieldMap(int i, Dictionary<int, string> map)
+        {
+            //Console.WriteLine(i);
+            var result = new List<string>();
+            var istring = Convert.ToString(i, 2).ToCharArray();
+            //Console.WriteLine(istring);
+            for (int b = istring.Length-1; b >= 0; b--)
+            {
+                if (istring[b] != '0')
+                {
+                    //Console.WriteLine(istring.Length - b - 1);
+                    if (map.ContainsKey(istring.Length - b - 1))
+                    {
+                        result.Add(map[istring.Length - b - 1]);
+                    }
+                }
+            }
+
+            return JsonConvert.SerializeObject(result);
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
