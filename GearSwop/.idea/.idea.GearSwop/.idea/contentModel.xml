@@ -175,6 +175,8 @@
             <e p="services" t="Include">
               <e p="gear-image-service.service.spec.ts" t="Include" />
               <e p="gear-image-service.service.ts" t="Include" />
+              <e p="gear-info.service.spec.ts" t="Include" />
+              <e p="gear-info.service.ts" t="Include" />
               <e p="gear-set.service.spec.ts" t="Include" />
               <e p="gear-set.service.ts" t="Include" />
               <e p="swap.service.spec.ts" t="Include" />
@@ -220,8 +222,14 @@
         <e p="tslint.json" t="Include" />
       </e>
       <e p="Controllers" t="Include">
+        <e p="GearInfoController.cs" t="Include" />
         <e p="SwapController.cs" t="Include" />
         <e p="WeatherForecastController.cs" t="Include" />
+      </e>
+      <e p="GearRepository" t="Include">
+        <e p="GearInfoWorkflow.cs" t="Include" />
+        <e p="Item.cs" t="Include" />
+        <e p="Items.json" t="Include" />
       </e>
       <e p="GearSet.cs" t="Include" />
       <e p="GearSwop.csproj" t="IncludeRecursive" />
@@ -255,6 +263,7 @@
         <e p="item_descriptions.lua" t="Include" />
         <e p="items.lua" t="Include" />
       </e>
+      <e p="test.json" t="Include" />
       <e p="WeatherForecast.cs" t="Include" />
       <e p="wwwroot" t="Include">
         <e p="favicon.ico" t="Include" />

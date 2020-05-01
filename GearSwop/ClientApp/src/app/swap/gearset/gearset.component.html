@@ -1,72 +1,76 @@
-<form class="set-title">
-  <mat-form-field class="title-form">
-    <mat-label>Set Name</mat-label>
-    <input [(ngModel)]="gearSet.SetName" matInput placeholder="Set Name" name="setNamer">
-  </mat-form-field>
-</form>
 <div class="gear-select-layout">
-  <div class="gear-set-display">
-    <div class="gear-row">
-      <div (click)="selectGearItem('Main')">
-        <div><img src="https://static.ffxiah.com/images/icon/17440.png" alt="TESTING?"></div>
+  <div class="column">
+    <form class="set-title">
+      <mat-form-field class="title-form">
+        <mat-label>Set Name</mat-label>
+        <input [(ngModel)]="gearSet.SetName" matInput placeholder="Set Name" name="setNamer">
+      </mat-form-field>
+    </form>
+    <div class="gear-set-display">
+      <div class="gear-row">
+        <div (click)="selectGearItem('Main')">
+          <div><img src="https://static.ffxiah.com/images/icon/17440.png" alt="TESTING?"></div>
+        </div>
+        <div (click)="selectGearItem('Sub')">
+          <div><img src="https://static.ffxiah.com/images/icon/17441.png" alt="TESTING?"></div>
+        </div>
+        <div (click)="selectGearItem('Ranged')">
+          <div><img src="https://static.ffxiah.com/images/icon/17442.png" alt="TESTING?"></div>
+        </div>
+        <div (click)="selectGearItem('Ammo')">
+          <div><img src="https://static.ffxiah.com/images/icon/17443.png" alt="TESTING?"></div>
+        </div>
       </div>
-      <div (click)="selectGearItem('Sub')">
-        <div><img src="https://static.ffxiah.com/images/icon/17441.png" alt="TESTING?"></div>
+      <div class="gear-row">
+        <div (click)="selectGearItem('Head')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Neck')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Left Ear')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Right Ear')">
+          <div></div>
+        </div>
       </div>
-      <div (click)="selectGearItem('Ranged')">
-        <div><img src="https://static.ffxiah.com/images/icon/17442.png" alt="TESTING?"></div>
+      <div class="gear-row">
+        <div (click)="selectGearItem('Body')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Gloves')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Left Ring')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Right Ring')">
+          <div></div>
+        </div>
       </div>
-      <div (click)="selectGearItem('Ammo')">
-        <div><img src="https://static.ffxiah.com/images/icon/17443.png" alt="TESTING?"></div>
+      <div class="gear-row">
+        <div (click)="selectGearItem('Back')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Waist')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Legs')">
+          <div></div>
+        </div>
+        <div (click)="selectGearItem('Feet')">
+          <div></div>
+        </div>
       </div>
     </div>
-    <div class="gear-row">
-      <div (click)="selectGearItem('Head')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Neck')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Left Ear')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Right Ear')">
-        <div></div>
-      </div>
-    </div>
-    <div class="gear-row">
-      <div (click)="selectGearItem('Body')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Gloves')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Left Ring')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Right Ring')">
-        <div></div>
-      </div>
-    </div>
-    <div class="gear-row">
-      <div (click)="selectGearItem('Back')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Waist')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Legs')">
-        <div></div>
-      </div>
-      <div (click)="selectGearItem('Feet')">
-        <div></div>
-      </div>
+    <div class="save-button">
+      <button mat-raised-button *ngIf="!setSaved" [disabled]="displayGearSelection" (click)="saveFullSet()">Save Set</button>
+      <button mat-raised-button *ngIf="setSaved" [disabled]="displayGearSelection" (click)="editSet()">Edit Set</button>
     </div>
   </div>
-  <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateSet($event)"></app-gear-selection>
+  <div class="gear-selection">
+    <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateSet($event)"></app-gear-selection>
+  </div>
 </div>
-<div class="save-button">
-  <button mat-raised-button *ngIf="!setSaved" [disabled]="displayGearSelection" (click)="saveFullSet()">Save Set</button>
-  <button mat-raised-button *ngIf="setSaved" [disabled]="displayGearSelection" (click)="editSet()">Edit Set</button>
-</div>
-<!--<button (click)="setCheck()">CHECK CURRENT SAVED SET :D</button>-->
+

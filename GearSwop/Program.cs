@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using GearSwop.GearRepository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,7 @@ namespace GearSwop
     {
         public static void Main(string[] args)
         {
-            var items = LoadLuaResource("./Temp/items.lua");
+            /*var items = LoadLuaResource("./Temp/items.lua");
             var itemDescriptions = LoadLuaResource("./Temp/item_descriptions.lua");
 
             var id = 11697;
@@ -37,7 +38,7 @@ namespace GearSwop
                 //serialize object directly into file stream
                 serializer.Serialize(file, allItems);
             }
-             
+             //*/
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -61,14 +62,10 @@ namespace GearSwop
             return items;
         }
 
-        private static Dictionary<int, Dictionary<string, string>> MergeItems(
+        private static Dictionary<int, Item> MergeItems(
             Dictionary<int, Dictionary<string, string>> items,
             Dictionary<int, Dictionary<string, string>> itemDescriptions)
         {
-            /*enum slotEnum
-            {
-                
-            }*/
             var slotMap = new Dictionary<int, string>
             {
                 [0] = "Main",
@@ -87,7 +84,7 @@ namespace GearSwop
                 [13] = "Left Ring",
                 [14] = "Right Ring",
                 [15] = "Back"
-            };//*/
+            };
             var jobMap = new Dictionary<int, string>
             {
                 [0] = "NON",
@@ -121,7 +118,7 @@ namespace GearSwop
                 [15] = "Rare",
                 [14] = "Ex",
             };
-            var finalItems = new Dictionary<int, Dictionary<string, string>>();
+            var finalItems = new Dictionary<int, Item>();
             foreach (KeyValuePair<int, Dictionary<string, string>> itemData in items)
             {
                 Console.WriteLine(itemData.Value["category"]+itemData.Value["id"]);
@@ -129,36 +126,37 @@ namespace GearSwop
                 {
                     continue;
                 }
-                var item = new Dictionary<string, string>();
-                item["name"] = itemData.Value["en"];
-                item["lname"] = itemData.Value["enl"];
-                item["slots"] = ParseBitfieldMap(Int32.Parse(itemData.Value["slots"]), slotMap);
-                item["jobs"] = ParseBitfieldMap(Int32.Parse(itemData.Value["jobs"]), jobMap);
-                item["flags"] = ParseBitfieldMap(Int32.Parse(itemData.Value["flags"]), flagMap);
-                item["lvl"] = itemData.Value["level"];
+                var item = new Item();
+                item.Name = itemData.Value["en"];
+                item.LName = itemData.Value["enl"];
+                item.Slots = ParseBitfieldMap(Int32.Parse(itemData.Value["slots"]), slotMap);
+                item.Jobs = ParseBitfieldMap(Int32.Parse(itemData.Value["jobs"]), jobMap);
+                item.Flags = ParseBitfieldMap(Int32.Parse(itemData.Value["flags"]), flagMap);
+                item.Lvl = Int32.Parse(itemData.Value["level"]);
                 if (itemDescriptions.ContainsKey(itemData.Key))
                 {
-                    item["desc"] = itemDescriptions[itemData.Key]["en"];
+                    item.Description = itemDescriptions[itemData.Key]["en"];
                 }
                 else
                 {
-                    item["desc"] = "";
+                    item.Description = "";
                 }
                 if (itemData.Value.ContainsKey("item_level"))
                 {
-                    item["ilvl"] = itemData.Value["item_level"];
+                    item.ItemLevel = Int32.Parse(itemData.Value["item_level"]);
                 }
                 else
                 {
-                    item["ilvl"] = itemData.Value["level"];
+                    item.ItemLevel = item.Lvl;
                 }
                 finalItems[itemData.Key] = item;
             }
 
             return finalItems;
         }
+       
 
-        private static string ParseBitfieldMap(int i, Dictionary<int, string> map)
+        private static List<string> ParseBitfieldMap(int i, Dictionary<int, string> map)
         {
             //Console.WriteLine(i);
             var result = new List<string>();
@@ -176,7 +174,7 @@ namespace GearSwop
                 }
             }
 
-            return JsonConvert.SerializeObject(result);
+            return result;
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

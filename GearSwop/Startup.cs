@@ -1,3 +1,4 @@
+using GearSwop.GearRepository;
 using GearSwop.SwapProcessor;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +23,7 @@ namespace GearSwop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IProcessor, Processor>();
+            services.AddScoped<IGearInfoWorkflow, GearInfoWorkflow>();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

@@ -3,6 +3,7 @@ import {IGearItem} from '../../Interfaces/GearItem';
 import {FormControl} from '@angular/forms';
 import {GearImageServiceService} from '../../services/gear-image-service.service';
 import {MatOptionSelectionChange} from '@angular/material/core';
+import {GearInfoService} from '../../services/gear-info.service';
 
 @Component({
   selector: 'app-gear-selection',
@@ -13,17 +14,18 @@ export class GearSelectionComponent implements OnInit {
   gearSelector = new FormControl('');
   autocompleteOptions: string[] = ['Daybreak', 'Nirvana', 'Kraken Club'];
 
-  constructor(private gearImageServiceService: GearImageServiceService) { }
+  constructor(private gearImageServiceService: GearImageServiceService, private gearInfoService: GearInfoService) { }
 
   @Input() slot: string;
   @Output() chosenItem = new EventEmitter<IGearItem>();
   itemPreview: string;
 
   ngOnInit() {
+    this.gearInfoService.getGearInfo(22063).subscribe(x => console.log(x));
   }
 
   saveSelectedItem() {
-    this.chosenItem.emit({ slot: this.slot, itemName: this.gearSelector.value, itemId: 1});
+    //this.chosenItem.emit({ slots: this.slot, name: this.gearSelector.value, id: 1});
   }
 
   itemSelected($event) {
