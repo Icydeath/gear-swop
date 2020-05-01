@@ -153,6 +153,7 @@
         <e p="package.json" t="Include" />
         <e p="README.md" t="Include" />
         <e p="src" t="Include">
+          <e p="angularMaterialTheme.scss" t="Include" />
           <e p="app" t="Include">
             <e p="app.component.html" t="Include" />
             <e p="app.component.ts" t="Include" />
@@ -195,6 +196,12 @@
                 <e p="gearset.component.spec.ts" t="Include" />
                 <e p="gearset.component.ts" t="Include" />
               </e>
+              <e p="item-display" t="Include">
+                <e p="item-display.component.html" t="Include" />
+                <e p="item-display.component.scss" t="Include" />
+                <e p="item-display.component.spec.ts" t="Include" />
+                <e p="item-display.component.ts" t="Include" />
+              </e>
               <e p="swap.component.html" t="Include" />
               <e p="swap.component.scss" t="Include" />
               <e p="swap.component.ts" t="Include" />
@@ -211,7 +218,7 @@
           <e p="karma.conf.js" t="Include" />
           <e p="main.ts" t="Include" />
           <e p="polyfills.ts" t="Include" />
-          <e p="styles.css" t="Include" />
+          <e p="styles.scss" t="Include" />
           <e p="test.ts" t="Include" />
           <e p="tsconfig.app.json" t="Include" />
           <e p="tsconfig.server.json" t="Include" />
