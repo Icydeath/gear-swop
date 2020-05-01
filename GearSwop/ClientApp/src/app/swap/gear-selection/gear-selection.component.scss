@@ -1,18 +1,9 @@
 .gear-selection-card {
   max-width: 400px;
-  max-height: 200px;
 }
 
 .flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-.preview-image {
-
-}
-
-.preview-image[src=""] {
-  visibility:hidden;
 }

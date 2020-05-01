@@ -5,7 +5,7 @@ import {GearInfoService} from '../../services/gear-info.service';
 @Component({
   selector: 'app-item-display',
   templateUrl: './item-display.component.html',
-  styleUrls: ['./item-display.component.css']
+  styleUrls: ['./item-display.component.scss']
 })
 export class ItemDisplayComponent implements OnInit {
   itemId = 22063;
