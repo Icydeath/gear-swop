@@ -21,6 +21,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import { ItemDisplayComponent } from './swap/item-display/item-display.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatSelectModule} from '@angular/material/select';
     SwapComponent,
     GearsetComponent,
     GearSelectionComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    ItemDisplayComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

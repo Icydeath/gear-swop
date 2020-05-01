@@ -12,8 +12,15 @@ code {
   border-color: #1861ac;
 }
 
-html, body { height: 100%; }
+html, body {
+  height: 100vh;
+}
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.md-sidenav-container {
+  height: 100vh;
 }

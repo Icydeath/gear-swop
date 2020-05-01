@@ -1,0 +1,21 @@
+.gear-summary-layout {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  background-color: #E8F0FE;
+  overflow: visible;
+}
+
+img {
+  padding: 8px;
+}
+
+h3 {
+  font-size: 18px;
+  padding-right: 4px;
+}
+
+p {
+  font-size: 12px;
+  padding-right: 4px;
+}
