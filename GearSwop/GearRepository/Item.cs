@@ -4,7 +4,7 @@ namespace GearSwop.GearRepository
 {
     public class Item
     {
-        private string ItemId { get; set; }
+        public string ItemId { get; set; }
         public string Name { get; set; }
         public string LName { get; set; }
         public List<string> Slots { get; set; }

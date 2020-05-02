@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {IGearItem} from '../../Interfaces/GearItem';
 import {FormControl} from '@angular/forms';
 import {GearService} from '../../services/gear.service';
+import {GearSetService} from '../../services/gear-set.service';
 
 @Component({
   selector: 'app-gear-selection',
@@ -10,23 +11,26 @@ import {GearService} from '../../services/gear.service';
 })
 export class GearSelectionComponent implements OnInit {
   gearSelector = new FormControl('');
+  itemPreviewData: IGearItem;
   autocompleteOptions: string[] = ['Daybreak', 'Nirvana', 'Kraken Club'];
+  displayGearSelectionComponent = false;
 
-  constructor(private gearService: GearService) { }
-
+  constructor(private gearService: GearService, private gearSetService: GearSetService ) { }
   @Input() slot: string;
   @Output() chosenItem = new EventEmitter<IGearItem>();
-  itemPreviewImage: string;
-  itemPreviewData: IGearItem;
+  @Output() itemSaved = new EventEmitter<boolean>();
 
   ngOnInit() {
-    this.gearService.getSelectedItem().subscribe(x => this.itemPreviewData = x);
+
   }
 
   saveSelectedItem() {
+    this.gearSetService.updateSet(this.slot, this.gearSelector.value);
+    this.itemSaved.next(false);
   }
 
   itemSelected($event) {
     this.gearService.updateSelectedItem($event.option.value);
+    this.gearService.getSelectedItem().subscribe(x => this.itemPreviewData = x);
   }
 }

@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import {IGearSet} from '../Interfaces/GearSet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IGearItem} from '../Interfaces/GearItem';
+import {GearService} from './gear.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GearSetService {
-
   activeSet: IGearSet = new class implements IGearSet {
     SetName: string;
     Ammo: IGearItem;
@@ -27,11 +27,14 @@ export class GearSetService {
     Waist: IGearItem;
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private gearService: GearService) { }
 
-  updateSet(set) {
-    this.activeSet = set;
-    console.log(this.activeSet);
+  updateSet(slot, item) {
+    this.activeSet[slot] = item;
+  }
+
+  getActiveSetItemId(slot: string) {
+    return this.gearService.translateItemId(this.activeSet[slot]);
   }
 
   get getActiveSet() {

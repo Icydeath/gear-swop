@@ -166,6 +166,7 @@
             <e p="Interfaces" t="Include">
               <e p="GearItem.ts" t="Include" />
               <e p="GearSet.ts" t="Include" />
+              <e p="ItemMap.ts" t="Include" />
             </e>
             <e p="nav-menu" t="Include">
               <e p="nav-menu.component.html" t="Include" />

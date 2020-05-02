@@ -22,24 +22,28 @@ namespace GearSwop
     {
         public static void Main(string[] args)
         {
-            /*var items = LoadLuaResource("./Temp/items.lua");
+            makeItemResource();
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        private static void makeItemResource()
+        {
+            var items = LoadLuaResource("./Temp/items.lua");
             var itemDescriptions = LoadLuaResource("./Temp/item_descriptions.lua");
 
             var id = 11697;
-            Console.WriteLine(items[id]["en"]);
+            //Console.WriteLine(items[id]["en"]);
             //Console.WriteLine(itemDescriptions[id]["en"]);
 
             var allItems = MergeItems(items, itemDescriptions);
             
             //open file stream
-            using (StreamWriter file = File.CreateText(@".\test.json"))
+            using (StreamWriter file = File.CreateText(@".\GearRepository\items.json"))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 //serialize object directly into file stream
                 serializer.Serialize(file, allItems);
             }
-             //*/
-            CreateHostBuilder(args).Build().Run();
         }
 
         private static Dictionary<int, Dictionary<string, string>> LoadLuaResource(string filepath)
@@ -127,6 +131,7 @@ namespace GearSwop
                     continue;
                 }
                 var item = new Item();
+                item.ItemId = itemData.Value["id"];
                 item.Name = itemData.Value["en"];
                 item.LName = itemData.Value["enl"];
                 item.Slots = ParseBitfieldMap(Int32.Parse(itemData.Value["slots"]), slotMap);

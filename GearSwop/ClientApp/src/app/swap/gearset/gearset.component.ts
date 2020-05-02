@@ -29,13 +29,13 @@ export class GearsetComponent implements OnInit {
     Sub: IGearItem;
     Waist: IGearItem;
   };
-  private displayGearSelection: boolean;
+  private displayGearSelection = false;
   private setSaved = false;
-  itemId: number;
 
   constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   updateSet($event) {
     this.gearSet[$event.slot] = $event.itemName;
@@ -48,16 +48,31 @@ export class GearsetComponent implements OnInit {
     this.displayGearSelection = true;
   }
 
+  itemSaved() {
+    this.displayGearSelection = false;
+  }
+
   saveFullSet() {
-    this.gearSetService.updateSet(this.gearSet);
-    this.setSaved = true;
+
   }
 
   editSet() {
     this.setSaved = false;
   }
 
+  getImageUrl(slot) {
+    let itemId = this.gearSetService.getActiveSetItemId(slot);
+    if(!itemId){
+      return
+    }
+    return 'https://static.ffxiah.com/images/icon/'+ itemId +'.png';
+  }
+
   setCheck() {
     console.log(this.gearSetService.getActiveSet);
+  }
+
+  onImgError(event) {
+    event.target.src = 'assets/';
   }
 }
