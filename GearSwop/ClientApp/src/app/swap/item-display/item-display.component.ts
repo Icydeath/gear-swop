@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IGearItem} from '../../Interfaces/GearItem';
-import {GearInfoService} from '../../services/gear-info.service';
+import {GearService} from '../../services/gear.service';
 
 @Component({
   selector: 'app-item-display',
@@ -8,14 +8,13 @@ import {GearInfoService} from '../../services/gear-info.service';
   styleUrls: ['./item-display.component.scss']
 })
 export class ItemDisplayComponent implements OnInit {
-  itemId = 22063;
   displayedItem: IGearItem;
 
-  constructor(private gearInfoService: GearInfoService) { }
+  constructor(private gearService: GearService) { }
 
   ngOnInit() {
-    this.gearInfoService.getGearInfo(this.itemId).subscribe(x => {
-      this.displayedItem = x;
-    });
+    this.gearService.getSelectedItem().subscribe(x => this.displayedItem = x);
   }
+
+
 }

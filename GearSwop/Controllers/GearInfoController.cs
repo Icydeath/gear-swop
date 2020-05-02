@@ -1,4 +1,5 @@
-﻿using GearSwop.GearRepository;
+﻿using System.Collections.Generic;
+using GearSwop.GearRepository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GearSwop.Controllers
@@ -17,6 +18,13 @@ namespace GearSwop.Controllers
         {
             var gearInfo = _gearInfoWorkflow.GetGearInfo(itemId);
             return gearInfo;
+        }
+
+        [HttpGet("itemMap")]
+        public List<ItemMap> GetItemMap()
+        {
+            var itemMap = _gearInfoWorkflow.GetItemMap();
+            return itemMap;
         }
     }
 }
