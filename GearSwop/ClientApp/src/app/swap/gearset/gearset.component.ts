@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {SwapService} from '../../services/swap.service';
 import {GearSetService} from '../../services/gear-set.service';
-import {IGearSet} from '../../Interfaces/GearSet';
-import {IGearItem} from '../../Interfaces/GearItem';
+import {GearService} from '../../services/gear.service';
 
 @Component({
   selector: 'app-gearset',
@@ -11,36 +9,48 @@ import {IGearItem} from '../../Interfaces/GearItem';
 })
 export class GearsetComponent implements OnInit {
   slot: string
-  gearSet: IGearSet = new class implements IGearSet {
-    SetName: string;
-    Ammo: IGearItem;
-    Back: IGearItem;
-    Body: IGearItem;
-    Feet: IGearItem;
-    Hands: IGearItem;
-    Head: IGearItem;
-    LeftEar: IGearItem;
-    LeftRing: IGearItem;
-    Legs: IGearItem;
-    Main: IGearItem;
-    Neck: IGearItem;
-    RightEar: IGearItem;
-    RightRing: IGearItem;
-    Sub: IGearItem;
-    Waist: IGearItem;
-  };
+  slots = [
+    'Main',
+    'Sub',
+    'Ranged',
+    'Ammo',
+    'Head',
+    'Neck',
+    'Ear1',
+    'Ear2',
+    'Body',
+    'Hands',
+    'Ring1',
+    'Ring2',
+    'Back',
+    'Waist',
+    'Legs',
+    'Feet'
+  ]
   private displayGearSelection = false;
   private setSaved = false;
-
-  constructor(private swapService: SwapService, private gearSetService: GearSetService) { }
-
-  ngOnInit() {
+  private gearImageUrls = {
+    Main: "",
+    Sub: "",
+    Ammo: "",
+    Head: "",
+    Body: "",
+    Hands: "",
+    Legs: "",
+    Feet: "",
+    Neck: "",
+    Waist: "",
+    LeftEar: "",
+    RightEar: "",
+    LeftRing: "",
+    RightRing: "",
+    Back: "",
   }
 
-  updateSet($event) {
-    this.gearSet[$event.slot] = $event.itemName;
-    this.displayGearSelection = false;
-    this.setSaved = false;
+  constructor(private gearService: GearService, private gearSetService: GearSetService) { }
+
+  ngOnInit() {
+
   }
 
   selectGearItem(slot: string) {
@@ -49,30 +59,14 @@ export class GearsetComponent implements OnInit {
   }
 
   itemSaved() {
+    this.gearService.getSelectedItem().subscribe(x => {
+      this.gearSetService.updateSet(this.slot, x.name);
+      this.gearImageUrls[this.slot] = 'https://static.ffxiah.com/images/icon/'+ x.itemId +'.png';
+    })
     this.displayGearSelection = false;
-  }
-
-  saveFullSet() {
-
   }
 
   editSet() {
     this.setSaved = false;
-  }
-
-  getImageUrl(slot) {
-    let itemId = this.gearSetService.getActiveSetItemId(slot);
-    if(!itemId){
-      return
-    }
-    return 'https://static.ffxiah.com/images/icon/'+ itemId +'.png';
-  }
-
-  setCheck() {
-    console.log(this.gearSetService.getActiveSet);
-  }
-
-  onImgError(event) {
-    event.target.src = 'assets/';
   }
 }

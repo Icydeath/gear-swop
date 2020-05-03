@@ -3,74 +3,27 @@
     <form class="set-title">
       <mat-form-field class="title-form">
         <mat-label>Set Name</mat-label>
-        <input [(ngModel)]="gearSet.SetName" matInput placeholder="Set Name" name="setNamer">
+        <input matInput placeholder="Set Name" name="setNamer">
       </mat-form-field>
     </form>
+
     <div class="gear-set-display">
-      <div class="gear-row">
-        <div (click)="selectGearItem('Main')">
-          <div><img [src]="getImageUrl('Main')" alt="Main"></div>
-        </div>
-        <div (click)="selectGearItem('Sub')">
-          <div><img [src]="getImageUrl('Sub')" alt="Sub"></div>
-        </div>
-        <div (click)="selectGearItem('Ranged')">
-          <div><img [src]="getImageUrl('Ranged')" alt="Ranged"></div>
-        </div>
-        <div (click)="selectGearItem('Ammo')">
-          <div><img [src]="getImageUrl('Ammo')" alt="Ammo"></div>
-        </div>
-      </div>
-      <div class="gear-row">
-        <div (click)="selectGearItem('Head')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Neck')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Left Ear')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Right Ear')">
-          <div></div>
-        </div>
-      </div>
-      <div class="gear-row">
-        <div (click)="selectGearItem('Body')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Gloves')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Left Ring')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Right Ring')">
-          <div></div>
-        </div>
-      </div>
-      <div class="gear-row">
-        <div (click)="selectGearItem('Back')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Waist')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Legs')">
-          <div></div>
-        </div>
-        <div (click)="selectGearItem('Feet')">
-          <div></div>
+      <div class="gear-square" *ngFor="let slot of slots">
+        <div (click)="selectGearItem(slot)">
+          <div>
+            <div *ngIf="!gearImageUrls[slot]" class="placeholder-text">{{slot}}</div>
+            <img *ngIf="gearImageUrls[slot]" [src]="gearImageUrls[slot]" alt=slot class="gear-image">
+          </div>
         </div>
       </div>
     </div>
+
     <div class="save-button">
-      <button mat-raised-button *ngIf="!setSaved" [disabled]="displayGearSelection" (click)="saveFullSet()">Save Set</button>
+      <button mat-raised-button *ngIf="!setSaved" [disabled]="displayGearSelection">Save Set</button>
       <button mat-raised-button *ngIf="setSaved" [disabled]="displayGearSelection" (click)="editSet()">Edit Set</button>
     </div>
   </div>
   <div class="gear-selection">
-    <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (chosenItem)="updateSet($event)" (itemSaved)="itemSaved()"></app-gear-selection>
+    <app-gear-selection *ngIf="displayGearSelection" [slot]="slot" (itemSaved)="itemSaved()"></app-gear-selection>
   </div>
 </div>
-

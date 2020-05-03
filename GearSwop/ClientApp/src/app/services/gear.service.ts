@@ -4,7 +4,6 @@ import {IGearItem} from '../Interfaces/GearItem';
 import {map} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {IItemMap} from '../Interfaces/ItemMap';
-import {IGearSet} from '../Interfaces/GearSet';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,9 @@ export class GearService {
 
   updateSelectedItem(itemName) {
     let itemId = this.translateItemId(itemName);
-    this.GetGearInfoById(itemId).subscribe(x => this.currentSelectedItem.next(x));
+    this.GetGearInfoById(itemId).subscribe(x => {
+      this.currentSelectedItem.next(x);
+    });
   }
 
   getSelectedItem() {

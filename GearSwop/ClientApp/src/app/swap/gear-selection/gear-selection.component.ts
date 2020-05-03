@@ -13,11 +13,9 @@ export class GearSelectionComponent implements OnInit {
   gearSelector = new FormControl('');
   itemPreviewData: IGearItem;
   autocompleteOptions: string[] = ['Daybreak', 'Nirvana', 'Kraken Club'];
-  displayGearSelectionComponent = false;
 
   constructor(private gearService: GearService, private gearSetService: GearSetService ) { }
   @Input() slot: string;
-  @Output() chosenItem = new EventEmitter<IGearItem>();
   @Output() itemSaved = new EventEmitter<boolean>();
 
   ngOnInit() {
