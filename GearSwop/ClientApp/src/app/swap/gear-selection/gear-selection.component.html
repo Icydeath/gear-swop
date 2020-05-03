@@ -11,7 +11,8 @@
                    aria-label="Number"
                    matInput
                    [formControl]="gearSelector"
-                   [matAutocomplete]="auto">
+                   [matAutocomplete]="auto"
+                   (change)="getGearSuggestions()">
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="itemSelected($event)">
               <mat-option *ngFor="let option of autocompleteOptions" [value]="option">
                 {{option}}

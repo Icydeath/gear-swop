@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {GearSetService} from '../../services/gear-set.service';
+import {SetService} from '../../services/set.service';
 import {GearService} from '../../services/gear.service';
 
 @Component({
@@ -47,7 +47,7 @@ export class GearsetComponent implements OnInit {
     Back: "",
   }
 
-  constructor(private gearService: GearService, private gearSetService: GearSetService) { }
+  constructor(private gearService: GearService, private gearSetService: SetService) { }
 
   ngOnInit() {
 

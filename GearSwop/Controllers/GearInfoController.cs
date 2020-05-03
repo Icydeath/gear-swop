@@ -26,5 +26,11 @@ namespace GearSwop.Controllers
             var itemMap = _gearInfoWorkflow.GetItemMap();
             return itemMap;
         }
+        
+        [HttpGet("gearSuggestions/{job}/{slot}/{queryString}")]
+        public List<string> GetGearSuggestions(string job, string slot, string queryString)
+        {
+            return _gearInfoWorkflow.GetGearSuggestions(job, slot, queryString);
+        }
     }
 }

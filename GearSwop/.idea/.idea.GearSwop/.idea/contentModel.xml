@@ -175,10 +175,10 @@
               <e p="nav-menu.component.ts" t="Include" />
             </e>
             <e p="services" t="Include">
-              <e p="gear-set.service.spec.ts" t="Include" />
-              <e p="gear-set.service.ts" t="Include" />
               <e p="gear.service.spec.ts" t="Include" />
               <e p="gear.service.ts" t="Include" />
+              <e p="set.service.spec.ts" t="Include" />
+              <e p="set.service.ts" t="Include" />
               <e p="swap.service.spec.ts" t="Include" />
               <e p="swap.service.ts" t="Include" />
             </e>

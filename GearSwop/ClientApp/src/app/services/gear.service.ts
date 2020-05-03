@@ -34,6 +34,17 @@ export class GearService {
     return this.itemMap.find(x => x.itemLongName.toLowerCase() == lowercaseItemName).itemId;
   }
 
+  GetGearAutocompleteSuggestions(job, slot, queryString): Observable<string[]> {
+    const url = `gearSuggestions/${job}/${slot}/${queryString}`;
+
+    return this.http.get(url)
+      .pipe(
+        map(res => {
+          return res as string[];
+        })
+      );
+  }
+
   GetGearInfoById(itemId): Observable<IGearItem> {
     const url = `gearInfo/${itemId}`;
 

@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using Newtonsoft.Json;
 
@@ -11,6 +13,7 @@ namespace GearSwop.GearRepository
         Item GetGearInfo(int itemId);
         Dictionary<int, Item> ParseItemJson();
         List<ItemMap> GetItemMap();
+        List<string> GetGearSuggestions(string job, string slot, string query);
     }
     
     public class GearInfoWorkflow: IGearInfoWorkflow
@@ -22,6 +25,17 @@ namespace GearSwop.GearRepository
         {
             AllItems = ParseItemJson();
             MappedItems = MapItems(AllItems);
+        }
+
+        public List<string> GetGearSuggestions(string job, string slot, string query)
+        {
+            query = query.ToLower();
+            var reducedMap = MappedItems.Where(x => x.Jobs.Contains(job))
+                .Where(x => x.ItemSlot.Contains(slot))
+                .Where(x => x.ItemLongName.ToLower().StartsWith(query) || x.ItemShortName.ToLower().StartsWith(query))
+                .ToList();
+
+            return reducedMap.Select(x => x.ItemLongName).ToList();
         }
         
         public Item GetGearInfo(int itemId)
@@ -43,7 +57,9 @@ namespace GearSwop.GearRepository
                 {
                     ItemId = item.Key,
                     ItemShortName = item.Value.Name,
-                    ItemLongName = item.Value.LName
+                    ItemLongName = item.Value.LName,
+                    ItemSlot = item.Value.Slots,
+                    Jobs = item.Value.Jobs
                 });
             }
 
@@ -65,6 +81,8 @@ namespace GearSwop.GearRepository
         public int ItemId { get; set; }
         public string ItemShortName { get; set; }
         public string ItemLongName { get; set; }
+        public List<string> ItemSlot { get; set; }
+        public List<string> Jobs { get; set; }
     }
     
 }

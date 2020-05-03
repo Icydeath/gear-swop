@@ -22,7 +22,7 @@ namespace GearSwop
     {
         public static void Main(string[] args)
         {
-            makeItemResource();
+            //makeItemResource();
             CreateHostBuilder(args).Build().Run();
         }
 

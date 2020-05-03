@@ -7,7 +7,7 @@ import {GearService} from './gear.service';
 @Injectable({
   providedIn: 'root'
 })
-export class GearSetService {
+export class SetService {
   activeSet: IGearSet = new class implements IGearSet {
     SetName: string;
     Ammo: IGearItem;
