@@ -3,6 +3,7 @@ import {IGearItem} from '../../Interfaces/GearItem';
 import {FormControl} from '@angular/forms';
 import {GearService} from '../../services/gear.service';
 import {SetService} from '../../services/set.service';
+import {SwapService} from '../../services/swap.service';
 
 @Component({
   selector: 'app-gear-selection',
@@ -14,11 +15,14 @@ export class GearSelectionComponent implements OnInit {
   itemPreviewData: IGearItem;
   autocompleteOptions: string[];
 
-  constructor(private gearService: GearService, private setService: SetService ) { }
+  constructor(private gearService: GearService, private setService: SetService, private swapService: SwapService ) { }
   @Input() slot: string;
   @Output() itemSaved = new EventEmitter<boolean>();
 
+  currentJob: string;
+
   ngOnInit() {
+    this.swapService.getCharacterJob().subscribe(x => this.currentJob = x);
   }
 
   saveSelectedItem() {
@@ -32,7 +36,7 @@ export class GearSelectionComponent implements OnInit {
   }
 
   getGearSuggestions(){
-    this.gearService.GetGearAutocompleteSuggestions("SMN", this.slot, this.gearSelector.value)
+    this.gearService.GetGearAutocompleteSuggestions(this.currentJob, this.slot, this.gearSelector.value)
       .subscribe(x => this.autocompleteOptions = x);
 
   }

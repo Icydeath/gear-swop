@@ -11,7 +11,7 @@
       <div class="gear-square" *ngFor="let slot of slots">
         <div (click)="selectGearItem(slot)">
           <div>
-            <div *ngIf="!gearImageUrls[slot]" class="placeholder-text">{{slot}}</div>
+            <div class="placeholder-text">{{slot}}</div>
             <img *ngIf="gearImageUrls[slot]" [src]="gearImageUrls[slot]" alt=slot class="gear-image">
           </div>
         </div>

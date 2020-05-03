@@ -5,3 +5,13 @@
 .job-form {
   padding-left: 4%;
 }
+
+.job-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.mat-form-field {
+  padding: 20px;
+}

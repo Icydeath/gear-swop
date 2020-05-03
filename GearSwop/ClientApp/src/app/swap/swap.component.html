@@ -1,19 +1,23 @@
-<form class="job-form">
+<form class="job-form" [formGroup]="jobNameForm" (ngSubmit)="submitNameJob()" ngDefaultControl>
   <mat-form-field>
     <mat-label>Character Name</mat-label>
-    <input matInput placeholder="Character Name" name="characterName">
+    <input autocomplete="off" matInput placeholder="Character Name" formControlName="characterName" name="characterName" required>
+    <mat-error *ngIf="jobNameForm.hasError('required')">Please enter your charater's name</mat-error>
   </mat-form-field>
-  <br>
   <mat-form-field>
     <mat-label>Select a Job</mat-label>
-    <mat-select [(ngModel)]="jobValue" name="food">
-      <mat-option *ngFor="let job of jobs" [value]="job">
+    <mat-select formControlName="job" required>
+      <mat-option *ngFor="let job of jobAbbreviation" [value]="job">
         {{job}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="jobNameForm.hasError('required')">Please choose a job</mat-error>
   </mat-form-field>
+  <button *ngIf="!jobNameSet" mat-button type="submit" [disabled]="!jobNameForm.valid">Get Started!</button>
+  <button *ngIf="jobNameSet" (click)="editNameJob()"mat-button>Edit Name and Job</button>
 </form>
 <br>
-<app-gearset></app-gearset>
-
+<div *ngIf="jobNameSet" class="gear-set-display">
+  <app-gearset></app-gearset>
+</div>
 
