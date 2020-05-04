@@ -2,6 +2,8 @@
 {
     public class GearSet
     {
+        public string Mode { get; set; }
+        public string SetName { get; set; }
         public string Main { get; set; }
         public string Sub { get; set; }
         public string Ammo { get; set; }

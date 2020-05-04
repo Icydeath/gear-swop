@@ -14,7 +14,7 @@
     <mat-error *ngIf="jobNameForm.hasError('required')">Please choose a job</mat-error>
   </mat-form-field>
   <button *ngIf="!jobNameSet" mat-button type="submit" [disabled]="!jobNameForm.valid">Get Started!</button>
-  <button *ngIf="jobNameSet" (click)="editNameJob()"mat-button>Edit Name and Job</button>
+  <button *ngIf="jobNameSet" (click)="editNameJob()" mat-button>Edit Name and Job</button>
 </form>
 <br>
 <!--*ngIf="jobNameSet" REMOVED FOR DEVELOPMENT-->

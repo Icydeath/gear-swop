@@ -3,6 +3,7 @@ import {BehaviorSubject, throwError} from 'rxjs';
 import {IGearSet} from '../Interfaces/GearSet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map} from 'rxjs/operators';
+import {ISwap} from '../Interfaces/Swap';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,12 @@ export class SwapService {
 
   private characterName = new BehaviorSubject<string>(null);
   private characterJob = new BehaviorSubject<string>(null);
-
-  private Swap: Array<IGearSet> = [];
+  private gearSets: Array<IGearSet> = [];
+  private swap: ISwap = new class implements ISwap {
+    CharacterName: string;
+    Gear: Array<IGearSet>;
+    Job: string;
+  };
 
   constructor(private http: HttpClient) {  }
 
@@ -30,12 +35,20 @@ export class SwapService {
   }
 
   addSetToSwap(set: IGearSet) {
-    console.log(set);
-    this.Swap.push(set);
+    this.gearSets.push(set);
+  }
+
+  processSwap() {
+     this.getCharacterName().subscribe(x => this.swap.CharacterName = x);
+     this.getCharacterJob().subscribe(x => this.swap.Job = x);
+     this.swap.Gear = this.gearSets;
+     console.log(this.swap);
   }
 
   postSwap() {
-    let swapJson = JSON.stringify(this.Swap);
+    this.processSwap();
+    let swapJson = JSON.stringify(this.swap);
+    console.log(swapJson);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',

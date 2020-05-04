@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using GearSwop.SwapProcessor;
+﻿using GearSwop.SwapProcessor;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GearSwop.Controllers
@@ -14,12 +13,6 @@ namespace GearSwop.Controllers
         {
             this.processor = processor;
         }
-
-        /*[HttpGet]
-        public string GetSwap()
-        {
-            return "taco";
-        }*/
 
         [HttpPost]
         public IActionResult PostSwap([FromBody] Swap formResponse)

@@ -30,10 +30,6 @@ namespace GearSwop.SwapProcessor
                 new GearSet {
                     Main = "Hardcoded mainhand weapon.",
                     Sub = "Hardcoded sub weapon."
-                },
-                new GearSet {
-                    Main = "Hardcoded mainhand weapon.",
-                    Sub = "Hardcoded sub weapon."
                 }
             };
         }
