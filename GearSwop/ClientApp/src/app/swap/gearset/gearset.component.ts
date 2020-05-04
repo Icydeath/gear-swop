@@ -69,4 +69,8 @@ export class GearsetComponent implements OnInit {
   editSet() {
     this.setSaved = false;
   }
+
+  submitSet() {
+    this.gearSetService.postActiveGearSet();
+  }
 }

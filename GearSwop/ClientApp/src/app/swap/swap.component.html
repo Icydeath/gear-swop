@@ -17,7 +17,11 @@
   <button *ngIf="jobNameSet" (click)="editNameJob()"mat-button>Edit Name and Job</button>
 </form>
 <br>
-<div *ngIf="jobNameSet" class="gear-set-display">
+<!--*ngIf="jobNameSet" REMOVED FOR DEVELOPMENT-->
+<div class="gear-set-display">
   <app-gearset></app-gearset>
 </div>
 
+<div>
+  <button mat-button (click)="submitSwap()">Submit Swap</button>
+</div>

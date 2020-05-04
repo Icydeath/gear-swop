@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SwapService} from '../services/swap.service';
+import {SetService} from '../services/set.service';
 
 @Component({
   selector: 'app-swap',
@@ -21,7 +22,7 @@ export class SwapComponent {
     job: new FormControl({value: '', disabled: this.jobNameSet}, Validators.required),
   })
 
-  constructor(private swapService: SwapService) {  }
+  constructor(private swapService: SwapService, private setService: SetService) {  }
 
   submitNameJob() {
     this.jobNameForm.disable();
@@ -32,5 +33,9 @@ export class SwapComponent {
   editNameJob() {
     this.jobNameForm.enable();
     this.jobNameSet = false;
+  }
+
+  submitSwap() {
+    this.swapService.postSwap().subscribe(x => console.log(x));
   }
 }

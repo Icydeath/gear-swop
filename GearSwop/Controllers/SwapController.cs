@@ -15,11 +15,11 @@ namespace GearSwop.Controllers
             this.processor = processor;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public string GetSwap()
         {
             return "taco";
-        }
+        }*/
 
         [HttpPost]
         public IActionResult PostSwap([FromBody] Swap formResponse)

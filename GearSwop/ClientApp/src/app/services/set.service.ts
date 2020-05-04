@@ -3,6 +3,7 @@ import {IGearSet} from '../Interfaces/GearSet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IGearItem} from '../Interfaces/GearItem';
 import {GearService} from './gear.service';
+import {SwapService} from './swap.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class SetService {
     Waist: IGearItem;
   };
 
-  constructor(private http: HttpClient, private gearService: GearService) { }
+  constructor(private http: HttpClient, private gearService: GearService, private swapService: SwapService) { }
 
   updateSet(slot, item) {
     this.activeSet[slot] = item;
@@ -41,13 +42,7 @@ export class SetService {
     return this.activeSet;
   }
 
-  postGearSet(set: IGearSet) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'Authorization': 'my-auth-token'
-      })
-    };
-    return this.http.post('/swap', set, httpOptions);
+  postActiveGearSet() {
+    this.swapService.addSetToSwap(this.activeSet);
   }
 }
