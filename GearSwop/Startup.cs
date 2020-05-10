@@ -24,6 +24,7 @@ namespace GearSwop
         {
             services.AddScoped<IProcessor, Processor>();
             services.AddScoped<IGearInfoWorkflow, GearInfoWorkflow>();
+            services.AddControllers().AddNewtonsoftJson();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });

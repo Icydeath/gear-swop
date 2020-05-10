@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, throwError} from 'rxjs';
 import {IGearSet} from '../Interfaces/GearSet';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
+import {catchError} from 'rxjs/operators';
 import {ISwap} from '../Interfaces/Swap';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class SwapService {
   private gearSets: Array<IGearSet> = [];
   private swap: ISwap = new class implements ISwap {
     CharacterName: string;
-    Gear: Array<IGearSet>;
-    Job: string;
+    GearSets: Array<IGearSet>;
+    CharacterJob: string;
   };
 
   constructor(private http: HttpClient) {  }
@@ -40,8 +40,8 @@ export class SwapService {
 
   processSwap() {
      this.getCharacterName().subscribe(x => this.swap.CharacterName = x);
-     this.getCharacterJob().subscribe(x => this.swap.Job = x);
-     this.swap.Gear = this.gearSets;
+     this.getCharacterJob().subscribe(x => this.swap.CharacterJob = x);
+     this.swap.GearSets = this.gearSets;
      console.log(this.swap);
   }
 
@@ -53,7 +53,8 @@ export class SwapService {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': 'my-auth-token'
-      })
+      }),
+      responseType: 'blob' as 'text'
     };
     return this.http.post('/swap', swapJson, httpOptions)
       .pipe(

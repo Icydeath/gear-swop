@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SwapService} from '../services/swap.service';
 import {SetService} from '../services/set.service';
+import {ILuaFileDownload} from '../Interfaces/LuaFileDownload';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-swap',
@@ -22,6 +24,8 @@ export class SwapComponent {
     job: new FormControl({value: '', disabled: this.jobNameSet}, Validators.required),
   })
 
+  public swapOutput: ILuaFileDownload;
+
   constructor(private swapService: SwapService, private setService: SetService) {  }
 
   submitNameJob() {
@@ -36,6 +40,11 @@ export class SwapComponent {
   }
 
   submitSwap() {
-    this.swapService.postSwap().subscribe(x => console.log(x));
+    this.swapService.postSwap().subscribe(response => {
+      console.log(response);
+      var blob = new Blob([response], {type: 'text/plain'});
+      var filename = this.jobNameForm.get('characterName').value+"_"+this.jobNameForm.get('job').value+'.lua';
+      saveAs(blob, filename);
+    });
   }
 }

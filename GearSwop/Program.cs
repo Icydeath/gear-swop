@@ -31,7 +31,7 @@ namespace GearSwop
             var items = LoadLuaResource("./Temp/items.lua");
             var itemDescriptions = LoadLuaResource("./Temp/item_descriptions.lua");
 
-            var id = 11697;
+            //var id = 11697;
             //Console.WriteLine(items[id]["en"]);
             //Console.WriteLine(itemDescriptions[id]["en"]);
 

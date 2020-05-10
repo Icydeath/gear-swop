@@ -1,4 +1,5 @@
-﻿using GearSwop.SwapProcessor;
+﻿using System.Collections.Generic;
+using GearSwop.SwapProcessor;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GearSwop.Controllers
@@ -15,9 +16,18 @@ namespace GearSwop.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostSwap([FromBody] Swap formResponse)
+        public IActionResult PostSwap(GearSwapRequest request)
         {
-            return Ok(processor.StartProcessing(formResponse));
+            var result = processor.ProcessGearSwap(request);
+            Response.Headers.Add("Content-Disposition", $"attachment; filename=\"{result.CharacterName}_{result.Job}.lua\"");
+            return Content(result.FileContent, "text/plain");
         }
+    }
+
+    public class GearSwapRequest
+    {
+        public string CharacterName { get; set; }
+        public string CharacterJob { get; set; }
+        public List<GearSet> GearSets { get; set; }
     }
 }

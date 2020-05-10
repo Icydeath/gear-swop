@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\Users\smoke\AppData\local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\smoke\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_GearSwop.-318997493.00" t="ExcludeRecursive" />
-    <e p="C:\Users\smoke\source\repos\GearSwop\gear-swop\GearSwop" t="IncludeRecursive">
+    <e p="C:\Users\smoke\AppData\local\JetBrains\Rider2020.1\resharper-host\local\Transient\ReSharperHost\v201\SolutionCaches\_GearSwop.-1375932018.00" t="ExcludeRecursive" />
+    <e p="C:\Users\smoke\Code\gear-swop\GearSwop" t="IncludeRecursive">
       <e p=".gitignore" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />
+      <e p="BaseLuas" t="Include">
+        <e p="WHM.lua" t="Include" />
+      </e>
       <e p="bin" t="ExcludeRecursive" />
       <e p="ClientApp" t="Include">
         <e p=".editorconfig" t="Include" />
@@ -65,6 +68,7 @@
         <e p="node_modules\domino" t="IncludeRecursive" />
         <e p="node_modules\es6-promise" t="IncludeRecursive" />
         <e p="node_modules\fast-deep-equal" t="IncludeRecursive" />
+        <e p="node_modules\file-saver" t="IncludeRecursive" />
         <e p="node_modules\hammerjs" t="IncludeRecursive" />
         <e p="node_modules\jasmine-core" t="IncludeRecursive" />
         <e p="node_modules\jasmine-spec-reporter" t="IncludeRecursive" />
@@ -167,6 +171,7 @@
               <e p="GearItem.ts" t="Include" />
               <e p="GearSet.ts" t="Include" />
               <e p="ItemMap.ts" t="Include" />
+              <e p="LuaFileDownload.ts" t="Include" />
               <e p="Swap.ts" t="Include" />
             </e>
             <e p="nav-menu" t="Include">

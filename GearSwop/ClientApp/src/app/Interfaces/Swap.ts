@@ -2,6 +2,6 @@
 
 export interface ISwap {
   CharacterName: string;
-  Job: string;
-  Gear: Array<IGearSet>;
+  CharacterJob: string;
+  GearSets: Array<IGearSet>;
 }

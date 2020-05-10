@@ -6,6 +6,7 @@
         public string SetName { get; set; }
         public string Main { get; set; }
         public string Sub { get; set; }
+        public string Ranged { get; set; }
         public string Ammo { get; set; }
         public string Head { get; set; }
         public string Body { get; set; }
@@ -19,5 +20,11 @@
         public string LeftRing { get; set; }
         public string RightRing { get; set; }
         public string Back { get; set; }
+    }
+
+    public class GearItem
+    {
+        public string Name { get; set; }
+        public string Augments { get; set; }
     }
 }
