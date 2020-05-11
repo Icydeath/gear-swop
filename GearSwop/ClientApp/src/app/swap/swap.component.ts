@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {SwapService} from '../services/swap.service';
-import {SetService} from '../services/set.service';
-import {ILuaFileDownload} from '../Interfaces/LuaFileDownload';
 import { saveAs } from 'file-saver';
+import {JobTemplates} from '../Interfaces/JobTemplates';
 
 @Component({
   selector: 'app-swap',
@@ -11,26 +10,24 @@ import { saveAs } from 'file-saver';
   styleUrls: ['./swap.component.scss']
 })
 export class SwapComponent {
-  jobs: string[] = ['Warrior', 'Monk', 'White Mage', 'Black Mage', 'Red Mage', 'Thief', 'Paladin', 'Dark Knight',
-    'Beastmaster', 'Bard', 'Ranger', 'Samurai', 'Ninja', 'Dragoon', 'Summoner', 'Blue Mage', 'Corsair', 'Puppetmaster',
-    'Dancer', 'Scholar', 'Geomancer', 'Rune Fencer'];
   jobAbbreviation: string[] = ['WAR', 'MNK', 'WHM', 'BLM', 'RDM', 'THF', 'PLD', 'DRK', 'BST', 'BRD', 'RNG', 'SAM', 'NIN',
     'DRG', 'SMN', 'BLU', 'COR', 'PUP', 'DNC', 'SCH', 'GEO', 'RUN'];
-
   jobNameSet: boolean = false;
-
   jobNameForm = new FormGroup({
     characterName: new FormControl({value: '', disabled: this.jobNameSet}, Validators.required),
     job: new FormControl({value: '', disabled: this.jobNameSet}, Validators.required),
   })
 
-  public swapOutput: ILuaFileDownload;
+  actionCategories = {};
 
-  constructor(private swapService: SwapService, private setService: SetService) {  }
+  constructor(private swapService: SwapService) {  }
 
   submitNameJob() {
+    console.log(JobTemplates, this.jobNameForm.get('job').value);
+    console.log(JobTemplates[this.jobNameForm.get('job').value]);
     this.jobNameForm.disable();
     this.swapService.setNameJob(this.jobNameForm.value);
+    this.actionCategories = JobTemplates[this.jobNameForm.get('job').value];
     this.jobNameSet = true;
   }
 
@@ -42,8 +39,8 @@ export class SwapComponent {
   submitSwap() {
     this.swapService.postSwap().subscribe(response => {
       console.log(response);
-      var blob = new Blob([response], {type: 'text/plain'});
-      var filename = this.jobNameForm.get('characterName').value+"_"+this.jobNameForm.get('job').value+'.lua';
+      let blob = new Blob([response], {type: 'text/plain'});
+      let filename = this.jobNameForm.get('characterName').value+"_" + this.jobNameForm.get('job').value + '.lua';
       saveAs(blob, filename);
     });
   }

@@ -17,11 +17,13 @@
   <button *ngIf="jobNameSet" (click)="editNameJob()" mat-button>Edit Name and Job</button>
 </form>
 <br>
-<!--*ngIf="jobNameSet" REMOVED FOR DEVELOPMENT-->
-<div class="gear-set-display">
-  <app-gearset></app-gearset>
-</div>
 
+<div *ngIf="jobNameSet" class="action-category-layout">
+  <div *ngFor="let actionCategory of actionCategories | keyvalue">
+    <app-action-category [actionCategoryName]="actionCategory.value" [spellMap]="actionCategory.key"></app-action-category>
+  </div>
+</div>
+<br>
 <div>
   <button mat-button (click)="submitSwap()">Submit Swap</button>
 </div>

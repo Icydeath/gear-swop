@@ -22,6 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import { ItemDisplayComponent } from './swap/item-display/item-display.component';
+import { ActionCategoryComponent } from './swap/action-category/action-category.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ItemDisplayComponent } from './swap/item-display/item-display.component
     GearsetComponent,
     GearSelectionComponent,
     NavMenuComponent,
-    ItemDisplayComponent
+    ItemDisplayComponent,
+    ActionCategoryComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ng-cli-universal'}),

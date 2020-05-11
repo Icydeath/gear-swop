@@ -171,7 +171,7 @@
               <e p="GearItem.ts" t="Include" />
               <e p="GearSet.ts" t="Include" />
               <e p="ItemMap.ts" t="Include" />
-              <e p="LuaFileDownload.ts" t="Include" />
+              <e p="JobTemplates.ts" t="Include" />
               <e p="Swap.ts" t="Include" />
             </e>
             <e p="nav-menu" t="Include">
@@ -189,6 +189,12 @@
               <e p="swap.service.ts" t="Include" />
             </e>
             <e p="swap" t="Include">
+              <e p="action-category" t="Include">
+                <e p="action-category.component.html" t="Include" />
+                <e p="action-category.component.scss" t="Include" />
+                <e p="action-category.component.spec.ts" t="Include" />
+                <e p="action-category.component.ts" t="Include" />
+              </e>
               <e p="gear-selection" t="Include">
                 <e p="gear-selection.component.html" t="Include" />
                 <e p="gear-selection.component.scss" t="Include" />
@@ -246,7 +252,6 @@
       <e p="GearSet.cs" t="Include" />
       <e p="GearSwop.csproj" t="IncludeRecursive" />
       <e p="GearSwop.sln" t="IncludeFlat" />
-      <e p="LuaFile.cs" t="Include" />
       <e p="LuaResources.cs" t="Include" />
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
